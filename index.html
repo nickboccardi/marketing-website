@@ -14,21 +14,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#000; --navy:#253551; --bg:#fff; }
+  :root {
+    /* Palette pulled from the illustrations */
+    --navy:#14355E; --blue:#427DC0; --sky:#ACC8EB; --mist:#D4E3F5; --wash:#EDF2FA;
+    --ink:#1B2A41; --bg:#fff;
+  }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin:0; background:var(--bg); color:var(--ink); font-family:Roboto, system-ui, sans-serif; font-size:1.0625rem; line-height:1.6; }
+  body { margin:0; border-top:6px solid var(--navy); background:var(--bg); color:var(--ink); font-family:Roboto, system-ui, sans-serif; font-size:1.0625rem; line-height:1.6; }
   main { max-width:900px; margin:0 auto; padding:0 24px 96px; }
   section { padding:64px 0 0; }
-  h1 { font-weight:400; font-size:clamp(2rem, 6vw, 3.5rem); line-height:1.1; text-align:center; margin:32px 0 32px; }
-  h2 { font-weight:400; font-size:clamp(1.6rem, 4vw, 2.25rem); line-height:1.2; margin:0 0 20px; }
+  h1 { color:var(--navy); font-weight:400; font-size:clamp(2rem, 6vw, 3.5rem); line-height:1.1; text-align:center; margin:32px 0 32px; }
+  h2 { color:var(--navy); font-weight:400; font-size:clamp(1.6rem, 4vw, 2.25rem); line-height:1.2; margin:0 0 20px; }
   p { margin:0 0 1.1em; }
+  ::selection { background:var(--mist); }
+  h2::after { content:""; display:block; width:56px; height:4px; margin-top:14px; background:var(--blue); border-radius:2px; }
+  strong { color:var(--navy); font-weight:500; }
   img { display:block; max-width:100%; height:auto; }
-  .tagline { text-align:center; margin:24px 0; }
+  .tagline { text-align:center; margin:28px 0 8px; font-size:1.2rem; color:var(--navy); }
   ul.offers { list-style:none; padding:0; margin:0; }
-  ul.offers li { margin:0 0 .9em; }
+  ul.offers li { margin:0 0 .75em; padding:14px 18px; background:var(--wash); border-left:4px solid var(--blue); border-radius:0 6px 6px 0; }
   .about { display:grid; grid-template-columns:250px 1fr; gap:40px; align-items:start; }
-  .about img { border-radius:4px; }
+  .about img { border-radius:6px; box-shadow:12px 12px 0 var(--mist); }
   /* Illustration animations (subtle, play once visible, off for reduced motion) */
   .illo { width:100%; height:auto; }
   .illo .grow { transform-box:fill-box; transform-origin:bottom; }
@@ -52,7 +59,7 @@
 <main>
   <section id="top">
     <h1>Fractional Product Lead<br>for Early Stage Start Ups</h1>
-    <svg class="illo" viewBox="0 0 2000 1014" width="2000" height="1014" role="img" aria-label="Minimalist blue abstract illustration of three ascending bar-chart columns with a circular accent">
+    <svg class="illo" viewBox="0 0 1971 985" width="1971" height="985" role="img" aria-label="Minimalist blue abstract illustration of three ascending bar-chart columns with a circular accent">
       <rect width="1971" height="985" fill="#E8EFF8"/>
       <circle cx="1580" cy="435" r="363" fill="#D4E3F5"/>
       <g stroke="#B4C7DD" stroke-width="3"><path d="M116 857H754M116 892H580M116 927H406"/></g>
@@ -74,7 +81,7 @@
       <li><strong>Test a new product line:</strong> Validate demand and fit before you commit to a full-time team.</li>
       <li><strong>Navigate a pivot:</strong> Set new priorities and a clear plan so the team keeps shipping while the business model changes.</li>
     </ul>
-    <svg class="illo" style="margin-top:40px" viewBox="0 0 2000 1130" width="2000" height="1130" role="img" aria-label="Minimalist blue illustration of a ball rolling across a platform that bridges a gap between two blocks">
+    <svg class="illo" style="margin-top:40px" viewBox="0 0 1971 1101" width="1971" height="1101" role="img" aria-label="Minimalist blue illustration of a ball rolling across a platform that bridges a gap between two blocks">
       <rect width="1971" height="1101" fill="#E2E9F3"/>
       <rect width="1971" height="985" fill="#EDF2FA"/>
       <rect y="608" width="667" height="377" fill="#ACC8EB"/>
