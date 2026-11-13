@@ -29,6 +29,19 @@
   ul.offers li { margin:0 0 .9em; }
   .about { display:grid; grid-template-columns:250px 1fr; gap:40px; align-items:start; }
   .about img { border-radius:4px; }
+  /* Illustration animations (subtle, play once visible, off for reduced motion) */
+  .illo { width:100%; height:auto; }
+  .illo .grow { transform-box:fill-box; transform-origin:bottom; }
+  .illo.play .grow { animation:grow .9s cubic-bezier(.2,.7,.2,1) var(--d,0s) backwards; }
+  .illo.play .settle { animation:settle .7s ease-out 1.3s backwards; }
+  @keyframes grow { from { transform:scaleY(0); } }
+  @keyframes settle { from { opacity:0; transform:translateY(24px); } }
+  .illo .ball-x, .illo .ball-spin { transform-box:fill-box; transform-origin:center; }
+  .illo.play .ball-x { animation:roll-x 7s ease-in-out infinite alternate; }
+  .illo.play .ball-spin { animation:roll-spin 7s ease-in-out infinite alternate; }
+  @keyframes roll-x { from { transform:translateX(-319px); } to { transform:translateX(320px); } }
+  @keyframes roll-spin { from { transform:rotate(0); } to { transform:rotate(797deg); } }
+  @media (prefers-reduced-motion:reduce) { .illo * { animation:none !important; } }
   @media (max-width:720px) {
     .about { grid-template-columns:1fr; }
     .about img { max-width:250px; }
@@ -39,7 +52,15 @@
 <main>
   <section id="top">
     <h1>Fractional Product Lead<br>for Early Stage Start Ups</h1>
-    <img src="assets/hero.webp" width="2000" height="1014" alt="Minimalist blue abstract illustration of three ascending bar-chart columns with a circular accent">
+    <svg class="illo" viewBox="0 0 2000 1014" width="2000" height="1014" role="img" aria-label="Minimalist blue abstract illustration of three ascending bar-chart columns with a circular accent">
+      <rect width="1971" height="985" fill="#E8EFF8"/>
+      <circle cx="1580" cy="435" r="363" fill="#D4E3F5"/>
+      <g stroke="#B4C7DD" stroke-width="3"><path d="M116 857H754M116 892H580M116 927H406"/></g>
+      <rect class="grow" style="--d:.15s" x="1232" y="550" width="180" height="435" fill="#ACC8EB"/>
+      <rect class="grow" style="--d:.4s" x="1441" y="348" width="179" height="637" fill="#427DC0"/>
+      <rect class="grow" style="--d:.65s" x="1649" y="180" width="180" height="805" fill="#14355E"/>
+      <circle class="settle" cx="1322" cy="405" r="41" fill="#14355E"/>
+    </svg>
     <p class="tagline">I help start ups validate, launch, and scale their products</p>
   </section>
 
@@ -53,7 +74,15 @@
       <li><strong>Test a new product line:</strong> Validate demand and fit before you commit to a full-time team.</li>
       <li><strong>Navigate a pivot:</strong> Set new priorities and a clear plan so the team keeps shipping while the business model changes.</li>
     </ul>
-    <img style="margin-top:40px" src="assets/bridge.webp" width="2000" height="1130" loading="lazy" alt="Minimalist blue illustration of a document with horizontal lines, a blue header, and a circular icon.">
+    <svg class="illo" style="margin-top:40px" viewBox="0 0 2000 1130" width="2000" height="1130" role="img" aria-label="Minimalist blue illustration of a ball rolling across a platform that bridges a gap between two blocks">
+      <rect width="1971" height="1101" fill="#E2E9F3"/>
+      <rect width="1971" height="985" fill="#EDF2FA"/>
+      <rect y="608" width="667" height="377" fill="#ACC8EB"/>
+      <rect x="1304" y="608" width="667" height="377" fill="#14355E"/>
+      <g stroke="#B8C9DB" stroke-width="3"><path d="M748 840H1223M800 880H1171M852 921H1119"/></g>
+      <rect x="620" y="562" width="731" height="46" fill="#427DC0"/>
+      <g class="ball-x"><g class="ball-spin"><circle cx="985" cy="509" r="46" fill="#14355E"/><circle cx="985" cy="480" r="9" fill="#427DC0"/></g></g>
+    </svg>
   </section>
 
   <section id="about">
@@ -67,5 +96,16 @@
     </div>
   </section>
 </main>
+<script>
+  // Start animations when each illustration scrolls into view
+  (function () {
+    var els = document.querySelectorAll('.illo');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('play'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('play'); io.unobserve(en.target); } });
+    }, { threshold: 0.35 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 </body>
 </html>
