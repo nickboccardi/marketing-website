@@ -49,6 +49,9 @@
   @keyframes roll-x { from { transform:translateX(-319px); } to { transform:translateX(320px); } }
   @keyframes roll-spin { from { transform:rotate(0); } to { transform:rotate(797deg); } }
   @media (prefers-reduced-motion:reduce) { .illo * { animation:none !important; } }
+  footer { background:var(--wash); border-top:1px solid var(--mist); padding:32px 24px; text-align:center; }
+  footer a { color:var(--navy); font-weight:500; text-decoration:underline; text-underline-offset:3px; }
+  footer a:hover, footer a:focus-visible { color:var(--blue); }
   @media (max-width:720px) {
     .about { grid-template-columns:1fr; }
     .about img { max-width:250px; }
@@ -110,6 +113,9 @@
     </div>
   </section>
 </main>
+<footer id="contact">
+  <p style="margin:0"><a href="https://www.linkedin.com/in/nickboccardi/" target="_blank" rel="noopener noreferrer">Let's connect on LinkedIn</a></p>
+</footer>
 <script>
   // Start animations when each illustration scrolls into view
   (function () {
